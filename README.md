@@ -26,13 +26,13 @@ The preferred way to install this extension is through [Composer](http://getcomp
 Either run
 
 ```bash
-composer require deadmantfa/yii2-relation-trait:dev-master
+composer require deadmantfa/yii2-relation-trait
 ```
 
 or add
 
 ```php
-"deadmantfa/yii2-relation-trait": "*"
+"deadmantfa/yii2-relation-trait": "^2.0.0"
 ```
 
 to the require section of your application's ```composer.json``` file.
