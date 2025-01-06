@@ -1,31 +1,53 @@
 {
-    "name": "deadmantfa/yii2-relation-trait",
-    "type": "yii2-extension",
-    "description": "Yii 2 Models load with relation, & transaction save with relation",
-    "keywords": ["Yii2","relation","load","save","transaction","loadwithrelation", "savewithrelation", "related", "saveall", "loadall"],
-    "homepage": "http://github.com/deadmantfa/yii2-relation-trait",
-    "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/deadmantfa/yii2-relation-trait/issues",
-        "source": "https://github.com/deadmantfa/yii2-relation-trait"
+  "name": "deadmantfa/yii2-relation-trait",
+  "type": "yii2-extension",
+  "description": "Yii 2 Models load with relation & transaction save with relation (plus optional soft-delete/restore).",
+  "keywords": [
+    "Yii2",
+    "relation",
+    "load",
+    "save",
+    "transaction",
+    "loadwithrelation",
+    "savewithrelation",
+    "related",
+    "saveall",
+    "loadall"
+  ],
+  "homepage": "https://github.com/deadmantfa/yii2-relation-trait",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/deadmantfa/yii2-relation-trait/issues",
+    "source": "https://github.com/deadmantfa/yii2-relation-trait"
+  },
+  "authors": [
+    {
+      "name": "Yohanes Candrajaya",
+      "email": "moo.tensai@gmail.com"
     },
-    "authors": [
-        {
-            "name": "Yohanes Candrajaya",
-            "email": "moo.tensai@gmail.com"
-        },
-        {
-            "name": "Wenceslaus Dsilva",
-            "email": "wenceslausdsilva@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": "~2.0"
-    },
-    "autoload": {
-	"psr-4": {
-	    "deadmantfa\\relation\\": ""
-	}
+    {
+      "name": "Wenceslaus Dsilva",
+      "email": "wenceslausdsilva@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "yiisoft/yii2": "^2.0.51"
+  },
+  "autoload": {
+    "psr-4": {
+      "deadmantfa\\relation\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
 }
