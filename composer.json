@@ -49,5 +49,8 @@
     "allow-plugins": {
       "yiisoft/yii2-composer": true
     }
+  },
+  "require-dev": {
+    "rector/rector": "^2.0"
   }
 }

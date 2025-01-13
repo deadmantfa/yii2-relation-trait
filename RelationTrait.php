@@ -30,7 +30,6 @@ trait RelationTrait
      *
      * @param array $POST The POST data (likely Yii::$app->request->post()).
      * @param array $skippedRelations Relations to exclude from load.
-     * @return bool
      */
     public function loadAll(array $POST, array $skippedRelations = []): bool
     {
@@ -82,8 +81,6 @@ trait RelationTrait
      * Retrieves information about all relations defined in this model by scanning:
      *  - 'relationNames()' method if defined in the model (must return an array of relation names as strings), or
      *  - reflection for 'getXYZ()' methods returning an ActiveQueryInterface.
-     *
-     * @return array
      */
     public function getRelationData(): array
     {
@@ -164,7 +161,6 @@ trait RelationTrait
      * @param bool $isHasMany Whether this relation is plural (HasMany / ManyMany).
      * @param string $relName The relation name in the AR model.
      * @param array $v The data array for that relation.
-     * @return bool
      */
     private function loadToRelation(bool $isHasMany, string $relName, array $v): bool
     {
@@ -250,7 +246,6 @@ trait RelationTrait
      * Optionally uses soft-delete if configured.
      *
      * @param array $skippedRelations Relations to exclude from save.
-     * @return bool
      * @throws Exception
      */
     public function saveAll(array $skippedRelations = []): bool
@@ -474,9 +469,6 @@ trait RelationTrait
      * A small helper for building a 'where' condition array from a relation link array.
      *
      * For example, if $link = ['foreign_key_id' => 'id'], we build `['foreign_key_id' => $this->id]`.
-     *
-     * @param array $link
-     * @return array
      */
     private function buildConditionFromLink(array $link): array
     {
@@ -494,7 +486,6 @@ trait RelationTrait
      * If soft-delete is configured, it will only mark them as deleted.
      *
      * @param array $skippedRelations Relations to exclude from deletion.
-     * @return bool
      * @throws Exception|Throwable
      */
     public function deleteWithRelated(array $skippedRelations = []): bool
@@ -583,7 +574,6 @@ trait RelationTrait
      * Requires $_rt_softrestore to be defined in the model.
      *
      * @param array $skippedRelations Relations to exclude from restore.
-     * @return bool
      * @throws Exception
      */
     public function restoreWithRelated(array $skippedRelations = []): bool
@@ -657,8 +647,6 @@ trait RelationTrait
 
     /**
      * Deprecated: Return array structured for form POST data (the "multi-dimensional" approach).
-     *
-     * @return array
      */
     public function getAttributesWithRelatedAsPost(): array
     {
@@ -671,9 +659,6 @@ trait RelationTrait
 
     /**
      * Builds a nested array representation of the current model's related records.
-     *
-     * @param array $return
-     * @return array
      */
     public function getRelatedRecordsTree(array $return): array
     {
@@ -693,8 +678,6 @@ trait RelationTrait
 
     /**
      * Return array of attributes including related records in a single tree.
-     *
-     * @return array
      */
     public function getAttributesWithRelated(): array
     {
