@@ -285,11 +285,9 @@ trait RelationTrait
                         }
                         $relPKAttr = $firstRelModel->primaryKey();
                         $isManyMany = (count($relPKAttr) > 1);
-
                         // Collect PK & FK for leftover deletion
                         $notDeletedPK = [];
                         $notDeletedFK = [];
-
                         foreach ($records as $index => $relModel) {
                             if (!$relModel instanceof ActiveRecord) {
                                 continue;
@@ -313,7 +311,6 @@ trait RelationTrait
                                 $notDeletedPK[] = $relModel->primaryKey;
                             }
                         }
-
                         // For existing parent, remove leftover children
                         if (!$isNewRecord) {
                             $relationLabel = Yii::t('app', Inflector::camel2words(StringHelper::basename($AQ->modelClass)));
@@ -349,7 +346,6 @@ trait RelationTrait
                                 }
                             }
                         }
-
                         // Now save each related record
                         foreach ($records as $index => $relModel) {
                             if (!$relModel->save() || !empty($relModel->errors)) {
@@ -363,22 +359,20 @@ trait RelationTrait
                                 $error = true;
                             }
                         }
-                    } else {
+                    } elseif (!is_array($records) && $records instanceof ActiveRecord) {
                         // HasOne
-                        if (!is_array($records) && $records instanceof ActiveRecord) {
-                            $relModel = $records;
-                            foreach ($link as $key => $value) {
-                                $relModel->{$key} = $this->{$value};
-                            }
-                            if (!$relModel->save() || !empty($relModel->errors)) {
-                                $recordsWords = Yii::t('app', Inflector::camel2words(StringHelper::basename($AQ->modelClass)));
-                                foreach ($relModel->errors as $validation) {
-                                    foreach ($validation as $errorMsg) {
-                                        $this->addError($name, "$recordsWords : $errorMsg");
-                                    }
+                        $relModel = $records;
+                        foreach ($link as $key => $value) {
+                            $relModel->{$key} = $this->{$value};
+                        }
+                        if (!$relModel->save() || !empty($relModel->errors)) {
+                            $recordsWords = Yii::t('app', Inflector::camel2words(StringHelper::basename($AQ->modelClass)));
+                            foreach ($relModel->errors as $validation) {
+                                foreach ($validation as $errorMsg) {
+                                    $this->addError($name, "$recordsWords : $errorMsg");
                                 }
-                                $error = true;
                             }
+                            $error = true;
                         }
                     }
                 }
