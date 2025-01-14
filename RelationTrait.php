@@ -333,7 +333,7 @@ trait RelationTrait
                             } else {
                                 // HasMany leftover cleanup
                                 $primaryColumn = $relPKAttr[0] ?? null;
-                                if ($primaryColumn !== null && !empty($notDeletedPK)) {
+                                if ($primaryColumn !== null && $notDeletedPK !== []) {
                                     $query = ['and', $notDeletedFK, ['not in', $primaryColumn, $notDeletedPK]];
                                     $this->safeDeleteOrSoftDelete(
                                         $relModel,
@@ -443,7 +443,7 @@ trait RelationTrait
     ): void
     {
         try {
-            if (!empty($softDeleteData)) {
+            if ($softDeleteData !== []) {
                 $modelClassOrInstance->updateAll($softDeleteData, $condition);
             } else {
                 $modelClassOrInstance->deleteAll($condition);
